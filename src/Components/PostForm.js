@@ -21,10 +21,10 @@ export default class PostForm extends Component {
         e.preventDefault()
         console.log(this.state)
         axios.post("https://jsonplaceholder.typicode.com/posts", this.state)
-        .then( (response) => {
+        .then((response) => {
             console.log(response)
         })
-        .catch( (error) => {
+        .catch((error) => {
             console.log(error)
         })
     }
@@ -34,18 +34,26 @@ export default class PostForm extends Component {
 
     return (
       <div>
-        <form onSubmit={this.submitHandler}>
-            <div>
-                <input type="text" name="userId" value={userId} onChange={this.changeHandler}/>
-            </div>
-            <div>
-                <input type="text" name="title" value={title} onChange={this.changeHandler}/>
-            </div>
-            <div>
-                <input type="text" name="body" value={body} onChange={this.changeHandler}/>
-            </div>
-            <button type="submit">Submit</button>
-        </form>
+        <h2>
+          Sends a POST request to the server over at <a href='https://jsonplaceholder.typicode.com/posts'>jsonplaceholder.typicode.com/posts</a>
+        </h2>
+        <div>
+          <form onSubmit={this.submitHandler} style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-start', flexDirection: 'column', margin: '100px' }}>
+              <div>
+                  User ID: <input type="text" name="userId" value={userId} onChange={this.changeHandler} style={{ marginLeft: '10px' }}/> 
+              </div>
+              <br />
+              <div>
+                  Title: <input type="text" name="title" value={title} onChange={this.changeHandler} style={{ marginLeft: '10px' }}/>
+              </div>
+              <br />
+              <div>
+                  Body: <input type="text" name="body" value={body} onChange={this.changeHandler} style={{ marginLeft: '10px' }}/>
+              </div>
+              <br />
+              <button type="submit">Submit</button>
+          </form>
+        </div>
       </div>
     )
   }
